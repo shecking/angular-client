@@ -1,3 +1,5 @@
+// This main.ts file is used by Angular as an 'entry point', required to launch and boostrap the app
+
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

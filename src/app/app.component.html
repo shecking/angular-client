@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <title></title>
   <body>
@@ -13,5 +13,20 @@
     </ul>
 
     <router-outlet></router-outlet>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+  <title></title>
+  <body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      </div>
+    </nav>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </body>
 </html>
