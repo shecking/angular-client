@@ -14,8 +14,7 @@ import { User } from './_models/user';
 })
 export class AppComponent {
   user: User;
-  title = 'box-the-house-client';
-  books: any;
+  title: 'box-the-house-client';
 
   constructor(
     // private http: HttpClient,
