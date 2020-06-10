@@ -3,8 +3,12 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+// import { fakeBackendProvider } from './_helpers'
+// ^ doesn't exist in this version (see branch auth-fake-api)
+// To use a real backend, keep these lines commented out
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,21 +19,22 @@ import { HomeComponent } from './home/home.component'
 import { LoginComponent } from './login/login.component'
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
-  ],
-  bootstrap: [AppComponent]
+    imports: [
+      BrowserModule,
+      AppRoutingModule,
+      HttpClientModule,
+      ReactiveFormsModule
+    ],
+    declarations: [
+      AppComponent,
+      HomeComponent,
+      LoginComponent
+    ],
+    providers: [
+      { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+      // fakeBackendProvider
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

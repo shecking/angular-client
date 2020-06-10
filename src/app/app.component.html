@@ -1,31 +1,22 @@
-<!-- <!DOCTYPE html>
-<html>
-  <title></title>
-  <body>
-    <h1>
-      {{title}}
-    </h1>
-
-    <ul>
-      <li *ngFor="let book of books.books">
-        {{ book.name }}
-      </li>
-    </ul>
-
-    <router-outlet></router-outlet>
-  </body>
-</html> -->
 <!DOCTYPE html>
+<!-- This is the main app component HTML, and should ONLY contain nav bar code, an alert component for displaying alerts, and a router-outlet component to display the current view (based on specified route)-->
 <html>
-  <title></title>
+  <head>
+    <title></title>
+  </head>
   <body>
     <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
       </div>
     </nav>
-    <div class="container">
+
+    <!-- main app container -->
+    <!-- All alerts and displayed components are run through here (ignore unrecognized tags from linter)-->
+    <div class="app-container" [ngClass]="{ 'bg-light': user }">
+      <alert></alert>
       <router-outlet></router-outlet>
     </div>
   </body>
