@@ -12,11 +12,10 @@
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
       </div>
     </nav>
-
     <!-- main app container -->
     <!-- All alerts and displayed components are run through here (ignore unrecognized tags from linter)-->
     <div class="app-container" [ngClass]="{ 'bg-light': user }">
-      <alert></alert>
+      <!-- <alert></alert> -->
       <router-outlet></router-outlet>
     </div>
   </body>

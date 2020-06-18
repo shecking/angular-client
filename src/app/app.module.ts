@@ -3,6 +3,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -35,6 +36,7 @@ import { LoginComponent } from './login/login.component'
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
       // fakeBackendProvider
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    // schemas: CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA
 })
 export class AppModule { }
