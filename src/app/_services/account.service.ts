@@ -32,10 +32,11 @@ export class AccountService {
     //
     //
     // POST request for login
-    login(username: string, password: string) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
+    login(username:string, password:string) {
+        return this.http.post<User>(`${environment.apiUrl}/users/account`, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
+                user.authdata = window.btoa(username + ':' + password);
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);
                 return user;
@@ -54,9 +55,18 @@ export class AccountService {
     //
     // POST request for registering a new user
     register(user: User) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
+        return this.http.post(`${environment.apiUrl}/account/register`, user);
     }
     //
+    //
+    // PUT request for changing password
+    // changePassword(data){
+    //     const headers = new HttpHeaders().set('Authorization', 'Token ' + localStorage.getItem('usertoken'));
+    //
+    //     const options =  { headers: headers }
+    //
+    //     return this.http.put(`${environment.apiUrl}/users/changepw`,data, options)
+    // }
     //
     // GET request for getting all users
     getAll() {

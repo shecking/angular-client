@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // import { Router } from '@angular/router'
 
-import { AuthenticationService } from './_services/authentication.service';
+import { AccountService } from './_services/account.service';
 import { User } from './_models/user';
 
 @Component({
@@ -18,17 +18,17 @@ import { User } from './_models/user';
 })
 export class AppComponent {
   user: User;
-  title = 'box-the-house-client';
+  title: 'box-the-house-client';
 
   constructor(
     // private http: HttpClient,
     // private router: Router,
-    private authenticationService: AuthenticationService
+    private accountService: AccountService
   ) {
-    this.authenticationService.user.subscribe(res => this.user = res)
+    this.accountService.user.subscribe(res => this.user = res)
   }
 
   logout() {
-    this.authenticationService.logout()
+    this.accountService.logout()
   }
 }

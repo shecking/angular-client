@@ -10,7 +10,7 @@
       <div class="card-body">
         <!-- The form uses [formGroup] in order to bind itself to the register component in register.component.ts -->
         <!-- It also binds the submit event (ngSubmit) to the `onSubmit()` method -->
-        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="firstName">First Name</label>
             <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />

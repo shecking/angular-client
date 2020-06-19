@@ -34,4 +34,10 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('.content span').textContent).toContain('box-the-house-client app is running!');
   });
+
+  it('should have router-outlet', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+
+    expect(fixture.nativeElement.querySelector('router-outlet')).not.toBeNull();
+  });
 });

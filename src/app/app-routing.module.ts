@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   // mapping into /users/users.module.ts, using AuthGuard for security
   { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
+  // { path: 'users', loadChildren: usersModule },
   // mapping into /account/account.module.ts, using AuthGuard for security
   { path: 'account', loadChildren: accountModule },
   // otherwise redirect to homepage (mapping to the root path of the application)
