@@ -25,8 +25,8 @@ export class RegisterComponent implements OnInit {
     // Using Angular's FormBuilder, it creates an instance of a form (`this.form`) and binds it to the <form> element from this component's HTML (`[formGroup]`)
     ngOnInit() {
         this.form = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
+            first_name: ['', Validators.required],
+            last_name: ['', Validators.required],
             username: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
 
         this.loading = true;
         // console.log(this.form.value)
-        this.accountService.register(this.form.value)
+        this.accountService.register(this.f.first_name.value, this.f.last_name.value, this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {

@@ -33,7 +33,7 @@ export class AccountService {
     //
     // POST request for login
     login(username:string, password:string) {
-        return this.http.post<User>(`${environment.apiUrl}/users/account`, { username, password })
+        return this.http.post<User>(`${environment.apiUrl}/login`, { credentials: { username, password }})
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 user.authdata = window.btoa(username + ':' + password);
@@ -54,8 +54,8 @@ export class AccountService {
     //
     //
     // POST request for registering a new user
-    register(user: User) {
-        return this.http.post(`${environment.apiUrl}/account/register`, user);
+    register(first_name:string, last_name:string, username:string, password:string) {
+        return this.http.post<User>(`${environment.apiUrl}/register`, { credentials: { first_name, last_name, username, password } });
     }
     //
     //
@@ -65,7 +65,7 @@ export class AccountService {
     //
     //     const options =  { headers: headers }
     //
-    //     return this.http.put(`${environment.apiUrl}/users/changepw`,data, options)
+    //     return this.http.put(`${environment.apiUrl}/changepw`,data, options)
     // }
     //
     // GET request for getting all users

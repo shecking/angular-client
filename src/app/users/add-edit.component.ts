@@ -36,8 +36,8 @@ export class AddEditComponent implements OnInit {
         }
 
         this.form = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
+            first_name: ['', Validators.required],
+            last_name: ['', Validators.required],
             username: ['', Validators.required],
             password: ['', passwordValidators]
         });
@@ -46,8 +46,8 @@ export class AddEditComponent implements OnInit {
             this.accountService.getById(this.id)
                 .pipe(first())
                 .subscribe(x => {
-                    this.f.firstName.setValue(x.firstName);
-                    this.f.lastName.setValue(x.lastName);
+                    this.f.first_name.setValue(x.first_name);
+                    this.f.last_name.setValue(x.last_name);
                     this.f.username.setValue(x.username);
                 });
         }
@@ -75,7 +75,7 @@ export class AddEditComponent implements OnInit {
     // These private methods are used to create or edit a user
     //
     private createUser() {
-        this.accountService.register(this.form.value)
+        this.accountService.register(this.f.first_name.value, this.f.last_name.value, this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
